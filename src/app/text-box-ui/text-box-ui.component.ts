@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,7 @@ import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
   styleUrls: ['./text-box-ui.component.scss']
 })
 export class TextBoxUiComponent implements OnInit {
+  @ViewChild('arrayList') arrayList: ElementRef;
   polygonForm: FormGroup;
   selected: number;
 
@@ -14,7 +15,7 @@ export class TextBoxUiComponent implements OnInit {
     this.polygonForm = this.fb.group({
       polygonArray: this.fb.array([new FormControl('')])
     });
-    console.log(this.arr);
+    console.log(this.arrayList);
   }
 
   get arr() { return this.polygonForm.get('polygonArray') as FormArray; }
